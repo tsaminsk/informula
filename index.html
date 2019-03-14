@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://www.baikalsr.ru/plugins/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/typeahead/typeahead.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/select2/select2.min.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/prettyCheckable/prettyCheckable.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" media="screen" />
+    <link href="https://www.baikalsr.ru/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="./files/fonts/ubuntu/style.css" rel="stylesheet" type="text/css">
+    <link href="./files/fonts/montserrat/style.css" rel="stylesheet" charset="utf-8">
+    <link href="https://www.baikalsr.ru/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/style.css?v=2017-10-05" rel="stylesheet" charset="utf-8">
+
+    <link href="https://www.baikalsr.ru/bitrix/cache/css/s1/baikalsr_new/kernel_main/kernel_main.css?155136094026562" type="text/css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/bitrix/cache/css/s1/baikalsr_new/page_c505a7eb767bfd14167cfc99a1fe2ea1/page_c505a7eb767bfd14167cfc99a1fe2ea1.css?15513472932976"
+        type="text/css" rel="stylesheet">
+    <link href="https://www.baikalsr.ru/bitrix/cache/css/s1/baikalsr_new/template_e9d18c964d2ddaa25d1f936febb8ed0c/template_e9d18c964d2ddaa25d1f936febb8ed0c.css?155142376696347"
+        type="text/css" data-template-style="true" rel="stylesheet">
+
+    <link href="./css/style.css" rel="stylesheet">
+    
+    <title>Пресс-центр транспортной компании «Байкал Сервис»</title>
+</head>
+<body>
+<div id='wrapper'>
+    <div id='main-layout'>
+        <div class='page-frame'>
+            <header class='page-frame__header'>
+                <div class='header-top' id='header-top'>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-6'>
+                                <div class='header-city'>
+                                    <a class='header-city__name _init' href='javascript:void(0);' data-init="cities"
+                                        data-metrika="top_city_select" data-ga="top_city_select">Москва</a>
+                                    <a class='header-city__count' href='/city/moscow/' data-metrika="top_city_contacts"
+                                        data-ga="top_city_contacts">
+                                        10 терминалов </a>
+                                    <span class="city_desc _init" data-init="desc"></span>
+                                </div>
+                            </div>
+                            <div class='col-xs-6 text-right'>
+                                <div class='header-contacts' id="phone_ip" data-phone="+7 (495) 995-08-09">
+                                    <a class='header-contacts__item header-contacts__phone' href='tel:+74959950809'><span
+                                            class="header-contacts__phone-code">+7 (495)</span><span class="header-contacts__phone-number">
+                                            995-08-09</span></a>
+                                    <a class='header-contacts__item header-contacts__callback callback _init' href='javascript:void(0);'
+                                        data-init="fancybox_recaptcha" data-options='{"width":650,"height":610,"autoSize": false,"fitToView": false}'
+                                        data-fancybox-href="#callback" data-metrika="top_callback" data-ga="top_callback">Заказать
+                                        звонок</a>
+                                    <a class='header-contacts__item header-contacts__feedback' href='/company/feedback/'
+                                        rel="nofollow" data-metrika="top_feedback" data-ga="top_feedback">Обратная
+                                        связь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='header-bottom'>
+                    <div class='container-fluid'>
+                        <a class='header-logo' href='/'></a>
+                        <div class='main-nav'>
+                            <div class='main-nav__inner'>
+                                <ul class="rc_main_nav">
+                                    <li class='rc_main-nav__item rc_main-nav__item_submenu'>
+                                        <a class='rc_main-nav__link' href='/services/'>Услуги и цены</a>
+                                        <ul class='rc_main-nav__submenu'>
+                                            <li>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__subtitle'>Услуги перевозки</div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/auto/'>Перевозка
+                                                            сборных грузов</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/small_cargo/'>Доставка
+                                                            малогабаритных грузов</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/schedule/'>Сроки
+                                                            доставки грузов</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/hypermarket/'>Доставка
+                                                            в гипермаркеты</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/russia/'>Грузоперевозки
+                                                            по России</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/kaliningrad/'>Перевозки
+                                                            в Калининград</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/kazakhstan/'>Перевозки
+                                                            в Казахстан</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/belarus/'>Перевозки
+                                                            в Белоруссию</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/kyrgyzstan/'>Перевозки
+                                                            в Кыргызстан</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/universal/'>Универсальная
+                                                            доставка</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/air/'>Авиаперевозки
+                                                            грузов</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/prices/'>Цены
+                                                            на грузоперевозки</a>
+                                                    </div>
+                                                </div>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__subtitle'>Складские услуги</div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/store/safe/'>Ответственное
+                                                            хранение</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/store/packing/'>Упаковка
+                                                            грузов</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/store/free/'>Бесплатное
+                                                            хранение грузов</a>
+                                                    </div>
+                                                </div>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__subtitle'>Дополнительно</div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/cargo_pick_up/'>Забор
+                                                            груза у отправителя</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/cargo_delivery/'>Доставка
+                                                            груза получателю</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/loading/'>Погрузо-разгрузочные
+                                                            работы</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/insurance/'>Страхование</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/return_docs/'>Перевозка
+                                                            документов</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/time_delivery/'>Доставка
+                                                            ко времени</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/services/additional/confirmation/'>Подтверждение
+                                                            выдачи груза</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/solutions/e-shops/'>Интернет-магазинам</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/corporate/'>Для бизнеса</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='rc_main-nav__item rc_main-nav__item_submenu'>
+                                        <a class='rc_main-nav__link' href='/info/'>Информация</a>
+                                        <ul class='rc_main-nav__submenu'>
+                                            <li>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/handover/'>Сдать
+                                                            груз</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/receiving/'>Получить
+                                                            груз</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/contract/'>Заключить
+                                                            договор</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/tracking/'>Отследить
+                                                            груз</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/payment/'>Оплатить
+                                                            услуги</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/change/'>Внести
+                                                            изменения</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/volume/'>Измерить
+                                                            объем груза</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/info/faq/'>Частые
+                                                            вопросы</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='rc_main-nav__item rc_main-nav__item_submenu'>
+                                        <a class='rc_main-nav__link' href='/docs/'>Документы</a>
+                                        <ul class='rc_main-nav__submenu'>
+                                            <li>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/contracts/'>Договоры</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/handover/'>Документы
+                                                            для сдачи груза</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/receiving/'>Документы
+                                                            для получения груза</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/attorney/'>Доверенности</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/teu_change/'>Заявления
+                                                            на замену ТЭУ</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/cargo_requirements/'>Требования
+                                                            к грузу</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/cargo_denied/'>Грузы,
+                                                            не принимаемые к&nbsp;перевозке</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/cargo_pack_mandatory/'>Грузы,
+                                                            подлежащие обязательной жесткой упаковке</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/claims/'>Оформление
+                                                            претензии</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/docs/identity/'>Документы,
+                                                            удостоверяющие личность</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='rc_main-nav__item'>
+                                        <a class='rc_main-nav__link' href='/city/'>Филиалы</a>
+                                    </li>
+                                    <li class='rc_main-nav__item rc_main-nav__item_submenu'>
+                                        <a class='rc_main-nav__link' href='/tools/'>Сервисы</a>
+                                        <ul class='rc_main-nav__submenu'>
+                                            <li>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/calculator/'>Калькулятор
+                                                            грузоперевозки</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/tracking/'>Отслеживание
+                                                            груза</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/invoice/'>Счета на
+                                                            оплату</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/schedule/'>Сроки
+                                                            доставки</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/order/'>Заявка на
+                                                            перевозку груза</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/order_delivery/'>Заявка
+                                                            на доставку до двери</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/change/'>Внести
+                                                            изменения</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/payment/'>Оплата
+                                                            банковской картой</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/tools/order_docs_buh/'>Запрос
+                                                            бухгалтерских документов</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='rc_main-nav__item rc_main-nav__item_submenu'>
+                                        <a class='rc_main-nav__link' href='/company/'>О компании</a>
+                                        <ul class='rc_main-nav__submenu'>
+                                            <li>
+                                                <div class='rc_main-nav__submenu-list'>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/company/history/'>История
+                                                            компании</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/company/news/'>Новости и
+                                                            акции</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/company/vacancies/'>Вакансии</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/company/feedback/'>Обратная
+                                                            связь</a>
+                                                    </div>
+                                                    <div class='rc_main-nav__sub-item'>
+                                                        <a class='rc_main-nav__sublink' href='/company/banners/'>Баннеры
+                                                            и логотипы</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a class='header-search__open rc_search_open' href='javascript:void(0);'></a>
+                            </div>
+                            <div class='header-search'>
+                                <form action="/search/" class="header-search__form _init" data-init="search_mod"
+                                    data-top="1" data-metrika="top_search" data-ga="top_search">
+                                    <input type="text" class="header-search__input" placeholder='Поиск по сайту' name="q"
+                                        autocomplete="off">
+                                    <a href="javascript:void(0);" class='header-search__close'></a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='user-panel'>
+                            <div class='user-panel__item'>
+                                <a class='user-panel__calc header-hint-popover' href='/tools/calculator/' data-content="Рассчитать стоимость грузоперевозки"
+                                    data-placement="bottom" data-original-title="" data-container="body"></a>
+                            </div>
+                            <div class='user-panel__item'>
+                                <a class='user-panel__track header-hint-popover' href='/tools/tracking/' data-content="Узнать где находится груз"
+                                    data-placement="bottom" data-original-title="" data-container="body"></a>
+                            </div>
+                            <div class='user-panel__item'>
+                                <a class='user-panel__lk btn btn_primary btn_icon-user' href='https://lk.baikalsr.ru/'
+                                    target="_blank" data-metrika="top_lk" data-ga="top_lk">Личный кабинет</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class='page-content'>
+            <div class="container">
+                <div class="row">
+                    <div class="cl-left">
+                        <div class="submenu">
+                            <div class="submenu__info">
+                                <div class="submenu__info-title">
+                                    Интересные факты
+                                </div>
+                                <div class="submenu__info-context">
+                                    <ul class="submenu__info-facts">
+                                        <li> 
+                                            Мы доставляем грузы даже в самые удалённые уголки нашей страны: у нас 50 000 населённых пунктов доставки, что в 45 раз
+                                            превышает число российских городов
+                                        </li>
+                                        <li>
+                                            Нам доверяют 1,5 млн. клиентов, число которых, кстати, превышает население целых государств, таких как Эстония,
+                                            Бахрейн, Маврикий
+                                        </li>
+                                        <li>
+                                            Мы постепенно расширяем свою географию и выходим в новые города и страны (сегодня доставляем грузы также в Киргизию,
+                                            Казахстан и Беларусь)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu__info">
+                                <div class="submenu__info-title">
+                                    Пресс-служба
+                                </div>
+                                <div class="submenu__info-context">
+                                    <div class="submenu__context-person">
+                                        <p>PR-менеджер Артём Исаев</p>
+                                        <a href="tel:+7 343 344-02-44">+7 343 344-02-44 (доб. 39016)</a>
+                                        <br>
+                                        <a href="tel:+7 922 120-10-21">+7 922 120-10-21</a>
+                                        <br>
+                                        <a href="mailto:isaev@baikalsr.ru">isaev@baikalsr.ru</a>
+                                    </div>
+                                    <div class="submenu__context-person">
+                                        <p>Менеджер по коммуникациям Гахова Ирина</p>
+                                        <a href="tel:+7 495 995-99-52">+7 495 995-99-52 (доб. 11925)</a>
+                                        <br>
+                                        <a href="tel:+7 916 383-71-30">+7 916 383-71-30</a>
+                                        <br>
+                                        <a href="mailto:gakhova.i@baikalsr.ru">gakhova.i@baikalsr.ru</a>
+                                    </div>
+                                    <div class="submenu__context-text">
+                                        Задайте вопрос или отправьте предложение прямо с сайта
+                                    </div>
+                                    <div class="submenu__context-button">
+                                        <a class="submenu__button--primary" href="#">Отправить</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu__info">
+                                <div class="submenu__info-title">
+                                    Мы в соцсетях
+                                </div>
+                                <div class="submenu__info-soc">
+                                    <a href="#">
+                                        <svg id="soc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
+                                            <path d="M6.21 15H0V0h6.79a3.52 3.52 0 0 1 3.78 3.46A3.21 3.21 0 0 1 8.4 6.7v.04a3.4 3.4 0 0 1 3.09 3.71c0 2.1-1.38 4.55-5.28 4.55zM3.5 8.5v3.73h2.03a2.73 2.73 0 0 0 1.56-.33 1.93 1.93 0 0 0 .76-1.58 1.88 1.88 0 0 0-.82-1.54A3.52 3.52 0 0 0 5.3 8.5zm0-5.83v3.28h1.36a2.35 2.35 0 0 0 1.48-.35 1.74 1.74 0 0 0 .62-1.36 1.56 1.56 0 0 0-.72-1.35 2.92 2.92 0 0 0-1.34-.23H3.5z" />
+                                        </svg>
+                                    </a>
+                                    <a href="#">
+                                        <svg id="soc" xmlns="http://www.w3.org/2000/svg" viewBox="18 0 40.13 15">
+                                            <path d="M7.82 0H5.87a3.42 3.42 0 0 0-3.6 3.7v1.7H.31a.3.3 0 0 0-.31.3v2.47a.3.3 0 0 0 .3.3h1.97v6.22a.3.3 0 0 0 .3.31h2.56a.3.3 0 0 0 .3-.3V8.46h2.3a.3.3 0 0 0 .3-.3V5.7a.3.3 0 0 0-.3-.3h-2.3V3.94c0-.7.17-1.05 1.08-1.05h1.3a.3.3 0 0 0 .32-.3V.3a.3.3 0 0 0-.31-.3z"
+                                                transform="translate(32)" />
+                                        </svg>
+                                    </a>
+                                    <a href="#">
+                                        <svg id="instagram-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.91 16.91">
+                                            <path id="Shape" class="cls-1"
+                                                d="M12.24 16.9H4.67A4.67 4.67 0 0 1 0 12.25V4.67A4.67 4.67 0 0 1 4.67 0h7.57a4.67 4.67 0 0 1 4.67 4.67v7.57a4.67 4.67 0 0 1-4.67 4.67zM4.67 1.5A3.17 3.17 0 0 0 1.5 4.67v7.57a3.17 3.17 0 0 0 3.17 3.17h7.57a3.17 3.17 0 0 0 3.17-3.17V4.67a3.17 3.17 0 0 0-3.17-3.17z" />
+                                            <path id="Shape-2" data-name="Shape" class="cls-1"
+                                                d="M4.36 8.71A4.36 4.36 0 1 1 8.7 4.36 4.36 4.36 0 0 1 4.36 8.7zm0-7.21A2.86 2.86 0 1 0 7.2 4.36 2.86 2.86 0 0 0 4.36 1.5z"
+                                                transform="translate(4.1 4.1)" />
+                                            <path id="Shape-3" data-name="Shape" class="cls-1"
+                                                d="M1.1 0a1.1 1.1 0 0 0-.78 1.88 1.1 1.1 0 0 0 1.56 0A1.1 1.1 0 0 0 1.1 0z" transform="translate(11.9 2.83)" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl-right">
+                        <ol class="breadcrumb">
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/company/">О компании</a></li>
+                            <li><a href="/company/news/">Пресс-центр</a></li>
+                        </ol>
+                        <div class="text">
+
+                            <h1>Пресс-центр</h1>
+                            <div class="press__subtitle">Уважаемые журналисты! На страницах этого раздела мы собрали для вас оперативную информацию о нашей компании «Байкал Сервис».</div>
+                            <div class="press-blocks__wrapper">
+                                <div class="press-block__list row"> 
+                                    <div class="press-block__item col-lg-6 col-md-12">
+                                        <div class="press-block__item-inner" style="background-image: url(files/images/press/smi.jpg)">
+                                            <div class="press-block__item-icon">
+                                                <img src="./files/images/press/icon-smi.svg" alt="">
+                                            </div>
+                                            <div class="press-block__item-title">
+                                                СМИ о нас
+                                            </div>
+                                            <div class="press-block__item-text">
+                                                Последние новости и публикации, связанные с деятельностью компании &laquo;Байкал-Сервис&raquo;
+                                            </div>
+                                            <div class="press-block__item-button">
+                                                <a class="press-block__item-button--primary" href="#">
+                                                    Перейти
+                                                    <img src="./files/images/arrow.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="press-block__item col-lg-6 col-md-12">
+                                        <div class="press-block__item-inner" style="background-image: url(files/images/press/pr.jpg)">
+                                            <div class="press-block__item-icon">
+                                                <img src="./files/images/press/icon-pr.svg" alt="">
+                                            </div>
+                                            <div class="press-block__item-title">
+                                                Пресс-релизы
+                                            </div>
+                                            <div class="press-block__item-text">
+                                                Различные информационные сообщения компании, адресованные СМИ
+                                            </div>
+                                            <div class="press-block__item-button">
+                                                <a class="press-block__item-button--primary" href="#">
+                                                    Перейти
+                                                    <img src="./files/images/arrow.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="press-block__item col-lg-6 col-md-12">
+                                        <div class="press-block__item-inner" style="background-image: url(files/images/press/speaker.jpg)">
+                                            <div class="press-block__item-icon">
+                                                <img src="./files/images/press/icon-speaker.svg" alt="">
+                                            </div>
+                                            <div class="press-block__item-title">
+                                                Наши эксперты
+                                            </div>
+                                            <div class="press-block__item-text">
+                                                Познакомьтесь с нашими спикерами, к которым вы всегда можете обратиться за комментариями как к экпертам логистического рынка
+                                            </div>
+                                            <div class="press-block__item-button">
+                                                <a class="press-block__item-button--primary" href="#">
+                                                    Перейти
+                                                    <img src="./files/images/arrow.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="press-block__item col-lg-6 col-md-12">
+                                        <div class="press-block__item-inner" style="background-image: url(files/images/press/media.jpg)">
+                                            <div class="press-block__item-icon">
+                                                <img src="./files/images/press/icon-media.svg" alt="">
+                                            </div>
+                                            <div class="press-block__item-title">
+                                                Мультимедиа
+                                            </div>
+                                            <div class="press-block__item-text">
+                                                Фото и видеоматериалы, которые вы можете использовать для ваших публикаций, не забывая оставлять ссылку на его источник
+                                            </div>
+                                            <div class="press-block__item-button">
+                                                <a class="press-block__item-button--primary" href="#">
+                                                    Перейти
+                                                    <img src="./files/images/arrow.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="press-block__item col-lg-6 col-md-12">
+                                        <div class="press-block__item-inner" style="background-image: url(files/images/press/blog.jpg)">
+                                            <div class="press-block__item-icon">
+                                                <img src="./files/images/press/icon-blog.svg" alt="">
+                                            </div>
+                                            <div class="press-block__item-title">
+                                                Блог
+                                            </div>
+                                            <div class="press-block__item-text">
+                                                Познакомьтесь с нашими спикерами, к которым вы всегда можете обратиться за комментариями как к экпертам логистического рынка
+                                            </div>
+                                            <div class="press-block__item-button">
+                                                <a class="press-block__item-button--primary" href="#">
+                                                    Перейти
+                                                    <img src="./files/images/arrow.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="press-block__item col-lg-6 col-md-12">
+                                        <div class="press-block__item-inner" style="background-image: url(files/images/press/pk.jpg)">
+                                            <div class="press-block__item-icon">
+                                                <img src="./files/images/press/icon-pk.svg" alt="">
+                                            </div>
+                                            <div class="press-block__item-title">
+                                                Пресс-киты
+                                            </div>
+                                            <div class="press-block__item-text">
+                                                Фото и видеоматериалы, которые вы можете использовать для ваших публикаций, не забывая оставлять ссылку на его источник
+                                            </div>
+                                            <div class="press-block__item-button">
+                                                <a class="press-block__item-button--primary" href="#">
+                                                    Перейти
+                                                    <img src="./files/images/arrow.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="press__about">
+                                <div class="press__about-title">
+                                    О компании
+                                </div>
+                                <div class="press__about-text">
+                                    Транспортная компания «Байкал Сервис» – удобная логистика для людей и компаний. «Байкал Сервис» – транспортная компания, которая доставляет грузы по всей России и ближнему зарубежью. Мы присутствуем в более чем 250 городах, в 84 из них открыты наши филиалы. Успешно работаем с 1994 года, входим в пятёрку ведущих отечественных грузоперевозчиков по версии аналитического агентства InfraNews.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<footer id='footer'>
+    <div class='footer-top'>
+        <div class='container-fluid container-fluid_md'>
+            <div class='footer-top__inner'>
+                <div class='row'>
+                    <div class='col-xs-3 footer-contacts'>
+                        <div class='footer-phone__wrapper'>
+                            <a class='footer-phone' href='tel:+74959950809'>+7 (495) 995-08-09</a>
+                        </div>
+                        <div class='footer-address__wrapper'>
+                            <a href="/city/moscow/" class="footer-address" data-metrika="bottom_city_contacts" data-ga="bottom_city_contacts">Адреса
+                                терминалов в г.&nbsp;Москва</a>; </div>
+
+                        <div class='footer-nav'>
+                            <div class='footer-nav__title'>
+                                <a class='footer-nav__title-link' href='/company/'>О компании</a>
+                            </div>
+                            <div class='footer-nav__item'>
+                                <a class='footer-nav__link' href='/company/history/'>История компании</a>
+                            </div>
+                            <div class='footer-nav__item'>
+                                <a class='footer-nav__link' href='/company/news/'>Новости и акции</a>
+                            </div>
+                            <div class='footer-nav__item'>
+                                <a class='footer-nav__link' href='/company/vacancies/'>Вакансии</a>
+                            </div>
+                            <div class='footer-nav__item'>
+                                <a class='footer-nav__link' href='/company/feedback/'>Обратная связь</a>
+                            </div>
+                            <div class='footer-nav__item'>
+                                <a class='footer-nav__link' href='/company/banners/'>Баннеры и логотипы</a>
+                            </div>
+                        </div>
+                        <div class='footer-nav'>
+                            <div class='footer-nav__title'>
+                                <a class='footer-nav__title-link' href='/city/'>Филиалы</a>
+                            </div>
+                            <div class='footer-nav__item'>
+                                <a class='footer-nav__link' href='/city/list/'>Направления</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class='footer-nav__title'>
+                            <a class='footer-nav__title-link' href='/services/'>Услуги и цены</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <b>Услуги перевозки</b>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/auto/'>Перевозка сборных грузов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/small_cargo/'>Доставка малогабаритных грузов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/schedule/'>Сроки доставки грузов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/hypermarket/'>Доставка в гипермаркеты</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/russia/'>Грузоперевозки по России</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/kaliningrad/'>Перевозки в Калининград</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/kazakhstan/'>Перевозки в Казахстан</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/belarus/'>Перевозки в Белоруссию</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/kyrgyzstan/'>Перевозки в Кыргызстан</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/universal/'>Универсальная доставка</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/air/'>Авиаперевозка</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/prices/'>Цены на грузоперевозки</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class='footer-nav__item like-a-title'>
+                            <b>Дополнительно</b>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/cargo_pick_up/'>Забор груза у
+                                отправителя</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/cargo_delivery/'>Доставка груза
+                                получателю</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/loading/'>Погрузо-разгрузочные
+                                работы</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/insurance/'>Страхование грузов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/return_docs/'>Перевозка документов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/time_delivery/'>Доставка ко времени</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/additional/confirmation/'>Подтверждение выдачи
+                                груза</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/solutions/e-shops/'>Доставка для интернет-магазинов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/corporate/'>Транспортные услуги для бизнеса</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class='footer-nav__item like-a-title'>
+                            <b>Складские услуги</b>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/store/safe/'>Ответственное хранение</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/store/packing/'>Упаковка грузов</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/services/store/free/'>Бесплатное хранение грузов</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 footer-contacts like-a-row">
+                        <span class='footer_span_h'>Мы в соцсетях</span>
+
+                        <div class='social-list'>
+                            <div class='social-list__item'>
+                                <a class='social-list__link social-list__link_vk' href="https://vk.com/baikal_service_tc"
+                                    target="_blank" rel="nofollow"></a>
+                            </div>
+                            <div class='social-list__item'>
+                                <a class='social-list__link social-list__link_fb' href="https://www.facebook.com/Baikal.Service.TC/"
+                                    target="_blank" rel="nofollow"></a>
+                            </div>
+                            <div class="social-list__item">
+                                <a class="social-list__link social-list__link_in" href="https://www.instagram.com/baikalservice/"
+                                    target="_blank" rel="nofollow"></a>
+                            </div>
+                        </div>
+                        <a class="api" href="/dev/iframe/">API для разработчиков</a><br />
+                        <a class="m" href="https://m.baikalsr.ru/" data-metrika="bottom_mobile" data-ga="bottom_mobile">Мобильная
+                            версия сайта</a><br>
+                        <div class="mobile_block">
+                            <span class='footer_span_h'>Мобильное приложение</span>
+                            <div class='store-list'>
+                                <a class='store-list__link' href="https://itunes.apple.com/ru/app/%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81-%D1%82%D0%BA/id1370300495"
+                                    style="background-image: url(https://www.baikalsr.ru/i/appstore.svg)" target="_blank" rel="nofollow"
+                                    data-metrika="bottom_appstore" data-ga="bottom_appstore"></a>
+                                <a class='store-list__link' href="https://play.google.com/store/apps/details?id=ru.baikalsr.app"
+                                    style="background-image: url(https://www.baikalsr.ru/i/google-play.png)" target="_blank" rel="nofollow"
+                                    data-metrika="bottom_googleplay" data-ga="bottom_googleplay"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class='footer-nav__title'>
+                            <a class='footer-nav__title-link' href='/docs/'>Документы</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/contracts/'>Договоры</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/handover/'>Документы для сдачи груза</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/receiving/'>Документы для получения груза</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/attorney/'>Доверенности</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/teu_change/'>Заявления на замену ТЭУ</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/cargo_requirements/'>Требования к грузу</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/cargo_denied/'>Грузы, не принимаемые
+                                к&nbsp;перевозке</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/cargo_pack_mandatory/'>Грузы, подлежащие
+                                обязательной жесткой упаковке</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/claims/'>Оформление претензии</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/docs/identity/'>Документы, удостоверяющие личность</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class='footer-nav__title'>
+                            <a class='footer-nav__title-link' href='/tools/'>Сервисы</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/calculator/'>Расчет стоимости грузоперевозки</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/tracking/'>Отслеживание груза</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/invoice/'>Счета на оплату</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/schedule/'>Сроки доставки</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/order/'>Заявка на перевозку груза</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/order_delivery/'>Заявка на доставку до двери</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/change/'>Внести изменения</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/payment/'>Оплата банковской картой</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/tools/order_docs_buh/'>Запрос бухгалтерских документов</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class='footer-nav__title'>
+                            <a class='footer-nav__title-link' href='/info/'>Информация</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/handover/'>Сдать груз</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/receiving/'>Получить груз</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/contract/'>Заключить договор</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/tracking/'>Отследить груз</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/payment/'>Оплатить услуги</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/change/'>Внести изменения</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/volume/'>Измерить объем груза</a>
+                        </div>
+                        <div class='footer-nav__item'>
+                            <a class='footer-nav__link' href='/info/faq/'>Частые вопросы</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class='footer-bottom'>
+        <div class='footer-bottom__inner'>
+            <div class='container-fluid container-fluid_md'>
+                <div class='row'>
+                    <div class='col-xs-3'>
+                        <div class='copyright'>&copy; 2019 Транспортная компания &laquo;Байкал Сервис&raquo;</div>
+                    </div>
+                    <div class='col-xs-3'>
+                        <div class='address copyright'>111524, г. Москва, ул. Электродная, д.11, стр.9</div>
+                    </div>
+                    <div class='col-xs-3'>
+                        <div class='policy-link__wrapper'>
+                            <a class='policy-link' href='/privacy/'>Политика конфиденциальности</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

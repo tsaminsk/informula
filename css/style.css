@@ -1,0 +1,236 @@
+.press__subtitle {
+    line-height: 32px;
+    font-family: 'Montserrat';
+    font-weight: normal;
+    font-size: 21px;
+    margin: 0 0 41px;
+}
+
+.press-blocks__wrapper {
+    margin: 0 0 45px;
+}
+
+.press-block__item {
+    padding: 0 20px 20px 0;
+}
+
+.press-block__item-inner {
+    position: relative;
+    height: 300px;
+    padding: 67px 0 0 40px;
+    border-radius: 4px;
+    background: right center no-repeat;
+    background-size: cover;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 14px 31px 0 rgba(0, 0, 0, 0.07);
+    transition: padding 0.5s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.press-block__item-icon img {
+    height: 40px;
+    margin: 0 0 15px;
+}
+
+.press-block__item-title {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 20px 0 0;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 22px;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.2);
+    margin: 0 0 15px;
+}
+
+.press-block__item-text {
+    width: 63%;
+    line-height: 22px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.press-block__item:hover .press-block__item-button {
+    padding: 0 0 80px;
+}
+
+.press-block__item:hover .press-block__item-inner {
+    padding: 30px 0 0 40px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 14px 31px 0 rgba(0, 0, 0, 0.14);
+}
+
+.press-block__item:hover .press-block__item-text {
+    line-height: 19px;
+}
+
+.press-block__item-button {
+    position: absolute;
+    bottom: -40px;
+    left: 40px;
+    padding: 0;
+    transition: padding 0.5s ease;
+}
+
+.press-block__item-button--primary {
+    display: inline-block;
+    height: 40px;
+    padding: 0 40px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 40px;
+    color: #fff !important;
+    border-radius: 2px;
+    background-color: #0097D4;
+    transition: box-shadow 0.5s ease;
+}
+
+.press-block__item-button--primary:hover {
+    box-shadow: 0 10px 20px 0 rgba(2, 145, 211, 0.35);
+}
+
+.press-block__item-button--primary img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    margin: 0 0 0 25px;
+}
+
+.press__about {
+    margin: 0 0 140px;
+}
+
+.press__about-title {
+    line-height: 30px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.press__about-text {
+    line-height: 22px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.submenu {
+    margin: 140px 0 0;
+}
+
+.submenu__info {
+    padding: 21px 20px 22px;
+}
+
+.submenu__info-title {
+    line-height: 24px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 22px;
+    color: #2B2B2B;
+    margin: 0 0 15px;
+}
+
+.submenu__info-facts {
+    padding: 0 0 0 16px;
+}
+
+.submenu__info-facts li {
+    position: relative;
+    list-style: none;
+    padding: 0 0 15px;
+    line-height: 22px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 13px;
+    color: #2B2B2B;
+    opacity: 0.6;
+    margin: 0 0 15px;
+}
+
+.submenu__info-facts li:before {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: -14px;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #99D400;
+}
+
+.submenu__context-person {
+    margin: 0 0 9px;
+}
+
+.submenu__context-person p,
+.submenu__context-text {
+    line-height: 21px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 13px;
+    color: #2B2B2B;
+    margin: 0 0 5px;
+}
+
+.submenu__context-person a {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    line-height: 21px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 13px;
+    color: #808080;
+    transition: padding 0.5s ease;
+}
+
+.submenu__context-person a:hover {
+    padding: 0 0 10px;
+    color: #0097D4;
+}
+
+.submenu__context-text {
+    margin: 0 0 10px;
+}
+
+.submenu__button--primary {
+    display: inline-block;
+    height: 40px;
+    padding: 0 40px;
+    line-height: 40px;
+    color: #fff !important;
+    border-radius: 2px;
+    background-color: #0097D4;
+    transition: box-shadow 0.5s ease;
+}
+
+.submenu__button--primary:hover {
+    box-shadow: 0 10px 20px 0 rgba(2, 145, 211, 0.35);
+}
+
+.submenu__info-soc {
+    padding: 0 0 0 2px;
+}
+
+.submenu__info-soc a {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.submenu__info-soc a svg {
+    height: 17px;
+    fill: #2b2b2b;
+    transition: transform 0.5s ease,
+    fill 0.5s ease;
+}
+
+.submenu__info-soc a:hover svg {
+    fill: #009cdb;
+    transform: scale(1.2);
+}
+
+.mobile_block {
+    bottom: -90px;
+}
