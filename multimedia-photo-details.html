@@ -29,7 +29,8 @@
         type="text/css" rel="stylesheet">
 
     <link href="./css/style.css" rel="stylesheet">
-    
+    <script type="text/javascript" src="https://www.baikalsr.ru/plugins/jquery.min.js"></script>
+
     <title>Пресс-центр - Мультимедиа - Фоторепортажи - Детальная</title>
 </head>
 <body>
@@ -506,62 +507,62 @@
 
                             <h1>Искусственный интеллект сделает дроны умнее и безопаснее</h1>
 
-                            <div class="multimedia row">
+                            <div class="multimedia row ">
                                 <div class="multimedia__subtitle multimedia__subtitle--details row">
                                     26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика. Санкт-Петербург», в которой приняли участие представители более 150 компаний. Среди них ключевые игроки рынка: DPD, «Деловые линии», «Байкал-Сервис ТК», Avito. Услуги, GEFCO Санкт-Петербург, «ВИНК», V.I.G.Trans, «Морстройтехнология», DelAsia, «АНТОР Бизнес Решения», Wolf Russia, Peugeot Citroen Russia и многие другие.
                                 </div>
                                 <div class="multimedia__content">
-                                    <div class="multimedia__content-photos row">
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                    <div class="multimedia__content-photos row js-photo-details">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_1.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_2.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_3.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_4.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_5.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_6.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_7.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="multimedia__photo col-lg-4 col-xs-6">
+                                        <div class="multimedia__photo col-lg-4 col-xs-6 js-photo-item">
                                             <div class="multimedia__photo-inner">
                                                 <a href="#">
                                                     <img src="./files/images/multimedia/photo/details/photo_8.jpg" alt="">
@@ -595,7 +596,7 @@
                                 <div class="row">
                                     <div class="details__item-share">
                                         Поделиться: 
-                                        <div class="ya-share2" data-services="twitter,facebook,google,vkontakte,odnoklassniki" data-size="s"></div>
+                                        <div class="ya-share2" data-services="twitter,facebook,vkontakte,odnoklassniki" data-size="s"></div>
                                         <script src="http://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
                                         <script src="http://yastatic.net/share2/share.js"></script>
                                     </div>
@@ -906,5 +907,177 @@
         </div>
     </div>
 </footer>
+<div class="popup js-popup">
+    <div class="popup__photos clearfix">
+        <div class="popup__photos-slider">
+            <div class="popup__photos-slider--inner js-photo-slider">
+                <!-- <div class="popup__photos-img-wrapper popup__photos-img-wrapper--prev">
+                    <div class="popup__photos-img">
+                        <img src="./files/images/multimedia/photo/details/photo_1.jpg" alt="">
+                    </div>
+                    <div class="popup__photos-descr">
+                        <h6>Название</h6>
+                        <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика</p>
+                    </div>
+    
+                </div>
+                <div class="popup__photos-img-wrapper">
+                    <div class="popup__photos-img js-photo-slider">
+                        <img src="./files/images/multimedia/photo/details/photo_2.jpg" alt="">
+                    </div>
+                    <div class="popup__photos-descr">
+                        <h6>Название</h6>
+                        <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика</p>
+                    </div>
+    
+                </div>
+                <div class="popup__photos-img-wrapper popup__photos-img-wrapper--next">
+                    <div class="popup__photos-img js-photo-slider">
+                        <img src="./files/images/multimedia/photo/details/photo_3.jpg" alt="">
+                    </div>
+                    <div class="popup__photos-descr">
+                        <h6>Название</h6>
+                        <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика</p>
+                    </div>
+    
+                </div> -->
+
+            </div>
+        </div>
+        <div class="popup__slider-arrow--left js-popup-left">
+            <svg width="33" height="27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12.68 26.2a.5.5 0 0 0 .71 0 .5.5 0 0 0 0-.7L1.71 13.82h30.42a.5.5 0 0 0 0-1H1.71L13.39 1.14a.5.5 0 0 0-.7-.71L.14 12.96a.5.5 0 0 0 0 .7l.02.03"
+                    fill="#fff" /></svg>
+        </div>
+        <div class="popup__slider-arrow--right js-popup-right">
+            <svg width="33" height="27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M20.32 26.2a.5.5 0 0 1-.71 0 .5.5 0 0 1 0-.7l11.68-11.68H.87a.5.5 0 0 1 0-1h30.42L19.61 1.14a.5.5 0 0 1 .7-.71l12.54 12.53a.5.5 0 0 1 0 .7l-.02.03"
+                    fill="#fff" />
+            </svg>
+        </div>
+        <div class="popup__close popup__close--outer js-popup-close">
+            <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.96.62L19.33 0 9.98 9.36.62 0 0 .62l9.36 9.36L0 19.33l.62.63 9.36-9.36 9.35 9.36.63-.63-9.36-9.35L19.96.62z" fill="#fff"/>
+            </svg>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    class PhotoDetails {
+        constructor($el) {
+            this.$element = $el;
+            this.$photos = this.$element.find('.js-photo-item');
+            this.$popup = $('body').find('.js-popup');
+            this.$Slides = this.$popup.find('.js-photo-slider');
+            this.$popupCloseButton = this.$popup.find('.js-popup-close');
+            this.$max = null;
+            this.$current = 0;
+            this.$arrowLeft = this.$popup.find('.js-popup-left');
+            this.$arrowRight = this.$popup.find('.js-popup-right');
+
+            this.setPhotoArray();
+            this.setListener();
+            this.setPopupCloseButton();
+            this.setArrowListener();
+        }
+
+        changeCurrent(delta) {
+            let max = this.$photos.length;
+            this.$current = ( this.$current + delta + max) % max;
+
+            return this.$current;
+        }
+
+        setArrowListener() {
+            $(this.$arrowLeft).on('click', () => {
+
+                let delta = this.changeCurrent(-1) * 100 / this.$max + '%';
+
+                $(this.$Slides).css({
+                    'transform': `translate3d(-${delta}, 0, 0)`,
+                    'transition': 'transform 0.5s ease'
+                });
+            });
+
+            $(this.$arrowRight).on('click', () => {
+
+                let delta = this.changeCurrent(1) * 100 / this.$max + '%';
+
+                $(this.$Slides).css({
+                    'transform': `translate3d(-${delta}, 0, 0)`,
+                    'transition': 'transform 0.75s linear'
+                });
+            })
+        }
+
+        setPhotoArray() {
+            this.$max = this.$photos.length
+            let wdth = this.$max * 100 + '%';
+            let wdthItem = 100 / this.$max + '%';
+            $(this.$Slides).css('width', wdth);
+
+            $(this.$photos).each( (i, item) => {
+                
+                $(this.$Slides).append(`
+                    <div class="popup__photos-img-wrapper" style="width: ${wdthItem}">
+                        <div class="popup__photos-img js-photo-slider">
+                            <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
+                        </div>
+                        <div class="popup__photos-descr">
+                            <h6>Название</h6>
+                            <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция
+                                «ТрансЛогистика</p>
+                        </div>
+                    </div> `
+                );
+            })            
+        }
+
+        setListener() {
+            this.$photos.each((i, item) => {
+                $(item).find('.multimedia__photo-inner a').on('click', (e) => {
+                    e.preventDefault();
+                    
+                    this.$current = i;
+
+                    let delta = i * 100 / this.$max + '%';
+                    
+                    $(this.$Slides).css({
+                        'transform': `translate3d(-${delta}, 0, 0)`,
+                        'transition': 'transform 0s'
+                    });
+      
+                    $('body').css({
+                        'overflow-y': 'hidden',
+                        'margin-right': '15px'
+                    });
+                    $(this.$popup).fadeIn(1000);
+
+                    return false
+                })
+            })
+        }
+
+        setPopupCloseButton() {
+            $(this.$popupCloseButton).on('click', (e) => {
+
+                $('body').css({
+                    'overflow-y': 'auto',
+                    'margin-right': '0'
+                });
+
+                $(this.$popup).fadeOut(1000);
+            })
+        }  
+    }
+
+    $(() => {
+        $('.js-photo-details').each((i, item) => {
+            new PhotoDetails($(item));
+        });
+    });
+</script>
 </body>
 </html>

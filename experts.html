@@ -29,7 +29,7 @@
         type="text/css" rel="stylesheet">
 
     <link href="./css/style.css" rel="stylesheet">
-    
+    <script type="text/javascript" src="https://www.baikalsr.ru/plugins/jquery.min.js"></script>
     <title>Пресс-центр - Наши эксперты</title>
 </head>
 <body>
@@ -498,11 +498,11 @@
                         <div class="text">
 
                             <h1>Наши эксперты</h1>
-                            <div class="experts__subtitle">
-                                Познакомьтесь с нашими спикерами, к которым вы всегда можете обратиться за комментариями как к экспертам логистического рынка
-                            </div>
-                            <div class="experts row">
-                                <div class="experts__item row">
+                            <div class="experts row js-experts">
+                                <div class="experts__subtitle">
+                                    Познакомьтесь с нашими спикерами, к которым вы всегда можете обратиться за комментариями как к экспертам логистического рынка
+                                </div>
+                                <div class="experts__item row js-expert">
                                     <div class="experts__item-img">
                                         <img src="./files/images/experts/expert_1.jpg" alt="">
                                     </div>
@@ -517,11 +517,11 @@
                                             26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика. Санкт-Петербург», в которой приняли участие представители более 150 компаний.
                                         </div>
                                         <div class="experts__item-button">
-                                            <a href="#" class="btn btn-default"><span>Об эксперте</span></a>
+                                            <a href='javascript:void(0);' class="btn btn-default"><span>Об эксперте</span></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="experts__item row">
+                                <div class="experts__item row js-expert">
                                     <div class="experts__item-img">
                                         <img src="./files/images/experts/expert_2.jpg" alt="">
                                     </div>
@@ -536,11 +536,11 @@
                                             26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика. Санкт-Петербург», в которой приняли участие представители более 150 компаний.
                                         </div>
                                         <div class="experts__item-button">
-                                            <a href="#" class="btn btn-default"><span>Об эксперте</span></a>
+                                            <a href='javascript:void(0);' class="btn btn-default"><span>Об эксперте</span></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="experts__item row">
+                                <div class="experts__item row js-expert">
                                     <div class="experts__item-img">
                                         <img src="./files/images/experts/expert_3.jpg" alt="">
                                     </div>
@@ -555,11 +555,11 @@
                                             26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика. Санкт-Петербург», в которой приняли участие представители более 150 компаний.
                                         </div>
                                         <div class="experts__item-button">
-                                            <a href="#" class="btn btn-default"><span>Об эксперте</span></a>
+                                            <a href='javascript:void(0);' class="btn btn-default"><span>Об эксперте</span></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="experts__item row">
+                                <div class="experts__item row js-expert">
                                     <div class="experts__item-img">
                                         <img src="./files/images/experts/expert_4.jpg" alt="">
                                     </div>
@@ -574,11 +574,10 @@
                                             26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция «ТрансЛогистика. Санкт-Петербург», в которой приняли участие представители более 150 компаний.
                                         </div>
                                         <div class="experts__item-button">
-                                            <a href="#" class="btn btn-default"><span>Об эксперте</span></a>
+                                            <a href='javascript:void(0);' class="btn btn-default"><span>Об эксперте</span></a>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
 
                         </div>
@@ -885,5 +884,99 @@
         </div>
     </div>
 </footer>
+<div class="popup js-popup">
+    <div class="popup__experts clearfix">
+        <div class="popup__experts-img">
+            <img src="./files/images/experts/expert_1.jpg" alt="">
+        </div>
+        <div class="popup__experts-content">
+            <div class="popup__experts-name">
+                <h3>Иванова Маша</h3>
+            </div>
+            <div class="popup__experts-position">
+                Директор по продажам
+            </div>
+            <div class="popup__experts-experience">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Университет:</th>
+                            <th>Стаж:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>МЭСИ</td>
+                            <td>10 лет</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="popup__experts-coments">
+                <div class="popup__experts-experience_title">
+                    Комментарии от эксперта:
+                </div>
+                26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась
+                конференция «ТрансЛогистика.
+                Санкт-Петербург», в которой приняли участие представители более 150
+                компаний. Среди них ключевые игроки
+                рынка: DPD, «Деловые линии», «Байкал-Сервис ТК», Avito. Услуги, GEFCO
+                Санкт-Петербург, «ВИНК»,
+                V.I.G.Trans, «Морстройтехнология», DelAsia, «АНТОР Бизнес Решения», Wolf
+                Russia, Peugeot Citroen Russia
+                и многие другие.
+            </div>
+        </div>
+        <div class="popup__close js-popup-close">
+            <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.96.62L19.33 0 9.98 9.36.62 0 0 .62l9.36 9.36L0 19.33l.62.63 9.36-9.36 9.35 9.36.63-.63-9.36-9.35L19.96.62z"
+                    fill="#0097D4" />
+            </svg>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    class Experts {
+        constructor($el) {
+            this.$element = $el;
+            this.$experts = this.$element.find('.js-expert');
+            this.$popup = $('body').find('.js-popup');
+            this.$popupCloseButton = this.$popup.find('.js-popup-close');
+
+            this.setListener();
+            this.setPopupCloseButton();
+        }
+
+        setListener() {
+            this.$experts.each( (i, item) => {
+                $(item).find('.experts__item-button a.btn').on('click', (e) => {
+                    // тут по идее запрос к серверу и нужно в попап разложить контент или заранее его прописать в переменные
+                    $('body').css({
+                        'overflow-y': 'hidden',
+                        'margin-right': '15px'
+                    });
+                    $(this.$popup).fadeIn(1000);
+                    return false
+                })
+            })
+        }
+
+        setPopupCloseButton() {
+            $(this.$popupCloseButton).on('click', (e) => {
+                $('body').css({
+                    'overflow-y': 'auto',
+                    'margin-right': '0'
+                });
+                $(this.$popup).fadeOut(1000);
+            })
+        }
+    }
+
+    $(() => {
+        $('.js-experts').each((i, item) => {
+        new Experts($(item));
+        });
+    });
+</script>
 </body>
 </html>
