@@ -82,14 +82,6 @@
     vertical-align: top;
 }
 
-.popup__photos-img-wrapper--prev {
-
-}
-
-.popup__photos-img-wrapper--next {
-
-}
-
 .popup__photos-img {
     position: relative;
     height: 0;
