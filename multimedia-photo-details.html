@@ -441,17 +441,13 @@
                                     <div class="submenu__context-person">
                                         <p>PR-менеджер Артём Исаев</p>
                                         <a href="tel:+7 343 344-02-44">+7 343 344-02-44 (доб. 39016)</a>
-                                        <br>
                                         <a href="tel:+7 922 120-10-21">+7 922 120-10-21</a>
-                                        <br>
                                         <a href="mailto:isaev@baikalsr.ru">isaev@baikalsr.ru</a>
                                     </div>
                                     <div class="submenu__context-person">
                                         <p>Менеджер по коммуникациям Гахова Ирина</p>
                                         <a href="tel:+7 495 995-99-52">+7 495 995-99-52 (доб. 11925)</a>
-                                        <br>
                                         <a href="tel:+7 916 383-71-30">+7 916 383-71-30</a>
-                                        <br>
                                         <a href="mailto:gakhova.i@baikalsr.ru">gakhova.i@baikalsr.ru</a>
                                     </div>
                                     <div class="submenu__context-text">
@@ -915,6 +911,33 @@
 
             </div>
         </div>
+        <div class="popup__photos-galery js-photo-galery">
+            <!-- <div class="popup__galery-item">
+                <a href="#">
+                    <img src="./files/images/multimedia/photo/details/photo_8.jpg" alt="">
+                </a>
+            </div>
+            <div class="popup__galery-item">
+                <a href="#">
+                    <img src="./files/images/multimedia/photo/details/photo_8.jpg" alt="">
+                </a>
+            </div>
+            <div class="popup__galery-item">
+                <a href="#">
+                    <img src="./files/images/multimedia/photo/details/photo_8.jpg" alt="">
+                </a>
+            </div>
+            <div class="popup__galery-item">
+                <a href="#">
+                    <img src="./files/images/multimedia/photo/details/photo_8.jpg" alt="">
+                </a>
+            </div>
+            <div class="popup__galery-item">
+                <a href="#">
+                    <img src="./files/images/multimedia/photo/details/photo_8.jpg" alt="">
+                </a>
+            </div> -->
+        </div>
         <div class="popup__slider-arrow--left js-popup-left">
             <svg width="33" height="27" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -935,6 +958,7 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
     class PhotoDetails {
         constructor($el) {
@@ -947,11 +971,80 @@
             this.$current = 0;
             this.$arrowLeft = this.$popup.find('.js-popup-left');
             this.$arrowRight = this.$popup.find('.js-popup-right');
+            this.$Galery = this.$popup.find('.js-photo-galery');
 
             this.setPhotoArray();
+            this.setGalery();
             this.setListener();
             this.setPopupCloseButton();
             this.setArrowListener();
+        }
+
+        setGalery() {
+            $(this.$Galery).html('');
+
+            $(this.$photos).each( (i, item) => {
+                
+                let divClass = (i >= 4) ? '' : 'is-open';
+
+                $(this.$Galery).append(`
+                    <div class="popup__galery-item ${divClass}">
+                        <div class="popup__galery-item_inner">
+                            <a href="#">
+                                <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
+                            </a>
+                        </div>
+                    </div> `
+                );
+            });
+
+            $(this.$Galery).find('.popup__galery-item').each( (i, item) => {
+
+                let delta = i * 100 / this.$max + '%';
+
+                $(item).find('a').on( 'click', e => {
+                    e.preventDefault();
+
+                    this.$current = i;
+
+                    $(this.$Slides).css({
+                        'transform': `translate3d(-${delta}, 0, 0)`,
+                        'transition': 'transform 0s'
+                    });
+                });
+            });
+
+            $(this.$Galery).append(`
+                <div class="popup__galery-item is-open">
+                    <div class="popup__galery-item_inner">
+                        <div class="multimedia__item-decor">
+                            <svg width="41" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M7 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM20.5 7a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm17 0a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                                    fill="url(#paint0_linear)" />
+                                <defs>
+                                    <linearGradient id="paint0_linear" x1="41" y1="-3.5" x2="0" y2="-3.5"
+                                        gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#99D400" />
+                                        <stop offset="1" stop-color="#0097D4" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="multimedia__item-text text-center">
+                            <a href="#">Показать все фото</a>
+                        </div>
+                    </div>
+                </div> `
+            ).find('.popup__galery-item').last().find('a').on('click', (e) => {
+
+                $(this.$Galery).find('.popup__galery-item').each( (i, item) => {
+                    ( i >= 4 ) ? $(item).addClass('is-open') : null;
+
+                    ( i === this.$max ) ? $(item).removeClass('is-open') : null;
+
+                });                
+            });
         }
 
         changeCurrent(delta) {
@@ -968,7 +1061,7 @@
 
                 $(this.$Slides).css({
                     'transform': `translate3d(-${delta}, 0, 0)`,
-                    'transition': 'transform 0.5s ease'
+                    'transition': 'transform 0.75s ease'
                 });
             });
 
@@ -984,6 +1077,8 @@
         }
 
         setPhotoArray() {
+            // здесь я беру картинки из ссылок всех карточек, но по сути должен приходить массив картинок с сервера
+
             this.$max = this.$photos.length
             let wdth = this.$max * 100 + '%';
             let wdthItem = 100 / this.$max + '%';
@@ -997,13 +1092,13 @@
                             <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
                         </div>
                         <div class="popup__photos-descr">
-                            <h6>Название</h6>
+                            <h6>Название #${i + 1}</h6>
                             <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция
                                 «ТрансЛогистика</p>
                         </div>
                     </div> `
                 );
-            })            
+            });
         }
 
         setListener() {
@@ -1040,6 +1135,12 @@
                 });
 
                 $(this.$popup).fadeOut(1000);
+
+                let int = setInterval(() => {
+                    console.log('yes');
+                    this.setGalery();
+                    clearInterval(int);
+                }, 1000);
             })
         }  
     }
