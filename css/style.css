@@ -6,12 +6,14 @@
     display: inline-block;
     vertical-align: top;
     height: 30px;
+    padding: 8px 15px;
+    font-size: 12px;
     line-height: 1;
     color: #fff;
     background-color: #95C518;
     border-radius: 15px;
     pointer-events: none;
-    margin: 0 0 5px;
+    margin: -16px 0 2px 6px;
 }
 
 .popup {
@@ -193,7 +195,6 @@
 .popup__galery-item .multimedia__item-decor {
     height: 10vw;
     max-height: 100px;
-    /* height: 100px; */
     padding: 23px 0 0;
     border-radius: 4px;
     background-color: #fff;
@@ -421,7 +422,7 @@
     font-size: 14px;
     line-height: 1;
     color: #2B2B2B;
-    border-bottom: 1px solid #d5d5d5;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.2);;
 }
 
 .experts {
@@ -484,12 +485,11 @@
 .experts__item-button .btn {
     padding: 2px 14px;
     border-color: #9cd6ee;
-    transition: box-shadow 0.5s;
+    transition: background-color 0.5s;
 }
 
 .experts__item-button:hover .btn {
-    box-shadow: 0 5px 5px 0 rgba(2, 145, 211, 0.35);
-    background-color: #fff;
+    background-color: #0097D4;
 }
 
 .experts__item-button .btn span {
@@ -498,6 +498,11 @@
     line-height: 22px;
     color: #0097D4;
     opacity: 1;
+    transition: color 0.5s;
+}
+
+.experts__item-button:hover span {
+    color: #fff;
 }
 
 .details {
@@ -563,7 +568,7 @@
 }
 
 .details__item-source {
-    margin: 0 0 40px;
+    margin: -10px 0 40px;
 }
 
 .details__item-link {
@@ -671,7 +676,7 @@
 }
 
 .smi__items-wrapper {
-    padding: 10px 0 0;
+    padding: 10px 4px 0;
 }
 
 .smi__item {
@@ -680,10 +685,12 @@
 }
 
 .smi__item-inner {
+    position: relative;
     display: inline-block;
     vertical-align: top;
     width: 100%;
     height: 348px;
+    padding: 0 0 60px;
     border-radius: 4px;
     box-shadow: 0px 14px 31px rgba(0, 0, 0, 0.0664912), 0px 1px 2px rgba(0, 0, 0, 0.0626415);
     transition: padding 0.5s ease, box-shadow 0.3s ease;
@@ -732,10 +739,15 @@
     font-size: 14px;
     line-height: 1;
     color: #2B2B2B;
-    border-bottom: 1px solid #d5d5d5;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.2);;
 }
 
 .smi__item-link {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 0 15px 20px;
     font-weight: 500;
     font-size: 13px;
     line-height: 22px;
@@ -778,6 +790,7 @@
 }
 
 .press-block__item-icon img {
+    width: 40px;
     height: 40px;
     margin: 0 0 19px;
 }
