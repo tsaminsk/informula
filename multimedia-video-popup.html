@@ -1005,245 +1005,135 @@
 
 "use strict";
 
-function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+    class VideoDetails {
+        constructor($el) {
+            this.$element = $el;
+            this.$videos = this.$element.find('.js-video-item');
+            this.$max = null;
+            this.$popup = $('body').find('.js-popup');
+            this.$popupCloseButton = this.$popup.find('.js-popup-close');
+            this.$arrowLeft = this.$popup.find('.js-popup-left');
+            this.$arrowRight = this.$popup.find('.js-popup-right');
+            this.$Slides = this.$popup.find('.js-video-slider');
+            this.$current = 0;
 
-function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+            this.setListener();
+            this.setPopupCloseButton();
+            this.setArrowListener();
+            this.setVideosArray();
+        }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+        setVideosArray() {
+            $(this.$Galery).html('');
+            // здесь я беру видео от балды, но по сути должен приходить массив ссылок с сервера
+            let videoLink = './files/video/sample.mp4';
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+            this.$max = this.$videos.length
+            let wdth = this.$max * 100 + '%';
+            let wdthItem = 100 / this.$max + '%';
+            $(this.$Slides).css('width', wdth);
 
-var VideoDetails =
-/*#__PURE__*/
-function () {
-  function VideoDetails($el) {
-    _classCallCheck(this, VideoDetails);
+            $(this.$videos).each( (i, item) => {
 
-    this.$element = $el;
-    this.$videos = this.$element.find('.js-video-item');
-    this.$max = null;
-    this.$popup = $('body').find('.js-popup');
-    this.$popupCloseButton = this.$popup.find('.js-popup-close');
-    this.$arrowLeft = this.$popup.find('.js-popup-left');
-    this.$arrowRight = this.$popup.find('.js-popup-right');
-    this.$Slides = this.$popup.find('.js-video-slider');
-    this.$current = 0;
-    this.setListener();
-    this.setPopupCloseButton();
-    this.setArrowListener();
-    this.setVideosArray();
-  }
+                $(this.$Slides).append(`
+                    <div class="popup__video" style="width: ${wdthItem}">
+                        <video controls="controls">
+                            <source type="video/mp4" src="${videoLink}" />
+                        </video>
+                    </div> `
+                );
+            });
+        }
 
-  _createClass(VideoDetails, [{
-    key: "setVideosArray",
-    value: function setVideosArray() {
-      var _this = this;
+        setArrowListener() {
+            //влево по стрелке галереи
+            $(this.$arrowLeft).on('click', () => {
+                this.moveSlide(-1);
+            });
 
-      $(this.$Galery).html(''); // здесь я беру видео от балды, но по сути должен приходить массив ссылок с сервера
+            // вправо по стрелке галереи
+            $(this.$arrowRight).on('click', () => {
+                this.moveSlide(1);
+            });
 
-      var videoLink = './files/video/sample.mp4';
-      this.$max = this.$videos.length;
-      var wdth = this.$max * 100 + '%';
-      var wdthItem = 100 / this.$max + '%';
-      $(this.$Slides).css('width', wdth);
-      $(this.$videos).each(function (i, item) {
-        $(_this.$Slides).append("\n                    <div class=\"popup__video\" style=\"width: ".concat(wdthItem, "\">\n                        <video controls=\"controls\">\n                            <source type=\"video/mp4\" src=\"").concat(videoLink, "\" />\n                        </video>\n                    </div> "));
-      });
+            // влево-вправо по стрелкам клавиатуры
+            $(document).keydown( (e) => {
+                if (e.keyCode == 37) {
+                    this.moveSlide(-1);
+                }
+                else if (e.keyCode == 39) {
+                    this.moveSlide(1);
+                }
+            });
+        }
+
+        moveSlide(index) {
+            let delta = this.changeCurrent(index) * 100 / this.$max + '%';
+
+            $(this.$Slides).css({
+                'transform': `translate3d(-${delta}, 0, 0)`,
+                'transition': 'transform 0.75s ease'
+            });
+        }
+
+        changeCurrent(delta) {
+            let max = this.$videos.length;
+            this.$current = ( this.$current + delta + max) % max;
+
+            return this.$current;
+        }
+
+
+        setListener() {
+            this.$videos.each((i, item) => {
+
+                $(item).find('a.multimedia__item-inner').on('click', (e) => {
+                    e.preventDefault();
+
+                    e.preventDefault();
+
+                    this.$current = i;
+
+                    let delta = i * 100 / this.$max + '%';
+
+                    $(this.$Slides).css({
+                        'transform': `translate3d(-${delta}, 0, 0)`,
+                        'transition': 'transform 0s'
+                    });
+
+                    $(this.$popup).fadeIn(500);
+
+                    return false
+                })
+            })
+        }
+
+        setPopupCloseButton() {
+            $(this.$popupCloseButton).on('click', (e) => {
+                $(this.$popup).fadeOut(500);
+            });
+
+            // закрытие по клику вне галереи
+            $(this.$popup).on('click', (e) => {
+                if ( e.target.classList[0] == 'popup' ) {
+                    $(this.$popup).fadeOut(500);
+                }
+            });
+
+            //закрытие по esc
+            $(document).keydown( (e) => {
+                if (e.keyCode == 27) {
+                    $(this.$popup).fadeOut(500);
+                }
+            });
+        }
     }
-  }, {
-    key: "setArrowListener",
-    value: function setArrowListener() {
-      var _this2 = this;
 
-      $(this.$arrowLeft).on('click', function () {
-        var delta = _this2.changeCurrent(-1) * 100 / _this2.$max + '%';
-        $(_this2.$Slides).css({
-          'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-          'transition': 'transform 0.75s ease'
+    $(() => {
+        $('.js-video-details').each((i, item) => {
+            new VideoDetails($(item));
         });
-      });
-      $(this.$arrowRight).on('click', function () {
-        var delta = _this2.changeCurrent(1) * 100 / _this2.$max + '%';
-        $(_this2.$Slides).css({
-          'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-          'transition': 'transform 0.75s linear'
-        });
-      });
-    }
-  }, {
-    key: "changeCurrent",
-    value: function changeCurrent(delta) {
-      var max = this.$videos.length;
-      this.$current = (this.$current + delta + max) % max;
-      return this.$current;
-    }
-  }, {
-    key: "setListener",
-    value: function setListener() {
-      var _this3 = this;
-
-      this.$videos.each(function (i, item) {
-        $(item).find('a.multimedia__item-inner').on('click', function (e) {
-          e.preventDefault();
-          e.preventDefault();
-          _this3.$current = i;
-          var delta = i * 100 / _this3.$max + '%';
-          $(_this3.$Slides).css({
-            'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-            'transition': 'transform 0s'
-          });
-          $('body').css({
-            'overflow-y': 'hidden',
-            'margin-right': '15px'
-          });
-          $(_this3.$popup).fadeIn(1000);
-          return false;
-        });
-      });
-    }
-  }, {
-    key: "setPopupCloseButton",
-    value: function setPopupCloseButton() {
-      var _this4 = this;
-
-      $(this.$popupCloseButton).on('click', function (e) {
-        $('body').css({
-          'overflow-y': 'auto',
-          'margin-right': '0'
-        });
-        $(_this4.$popup).fadeOut(1000);
-      });
-    }
-  }]);
-
-  return VideoDetails;
-}();
-
-$(function () {
-  $('.js-video-details').each(function (i, item) {
-    new VideoDetails($(item));
-  });
-});
-
-
-    // class VideoDetails {
-    //     constructor($el) {
-    //         this.$element = $el;
-    //         this.$videos = this.$element.find('.js-video-item');
-    //         this.$max = null;
-    //         this.$popup = $('body').find('.js-popup');
-    //         this.$popupCloseButton = this.$popup.find('.js-popup-close');
-    //         this.$arrowLeft = this.$popup.find('.js-popup-left');
-    //         this.$arrowRight = this.$popup.find('.js-popup-right');
-    //         this.$Slides = this.$popup.find('.js-video-slider');
-    //         this.$current = 0;
-
-    //         this.setListener();
-    //         this.setPopupCloseButton();
-    //         this.setArrowListener();
-    //         this.setVideosArray();
-    //     }
-
-    //     setVideosArray() {
-    //         $(this.$Galery).html('');
-    //         // здесь я беру видео от балды, но по сути должен приходить массив ссылок с сервера
-    //         let videoLink = './files/video/sample.mp4';
-
-    //         this.$max = this.$videos.length
-    //         let wdth = this.$max * 100 + '%';
-    //         let wdthItem = 100 / this.$max + '%';
-    //         $(this.$Slides).css('width', wdth);
-
-    //         $(this.$videos).each( (i, item) => {
-
-    //             $(this.$Slides).append(`
-    //                 <div class="popup__video" style="width: ${wdthItem}">
-    //                     <video controls="controls">
-    //                         <source type="video/mp4" src="${videoLink}" />
-    //                     </video>
-    //                 </div> `
-    //             );
-    //         });
-    //     }
-
-    //     setArrowListener() {
-            
-    //         $(this.$arrowLeft).on('click', () => {
-
-    //             let delta = this.changeCurrent(-1) * 100 / this.$max + '%';
-
-    //             $(this.$Slides).css({
-    //                 'transform': `translate3d(-${delta}, 0, 0)`,
-    //                 'transition': 'transform 0.75s ease'
-    //             });
-    //         });
-
-    //         $(this.$arrowRight).on('click', () => {
-
-    //             let delta = this.changeCurrent(1) * 100 / this.$max + '%';
-
-    //             $(this.$Slides).css({
-    //                 'transform': `translate3d(-${delta}, 0, 0)`,
-    //                 'transition': 'transform 0.75s linear'
-    //             });
-    //         })
-    //     }
-
-    //     changeCurrent(delta) {
-    //         let max = this.$videos.length;
-    //         this.$current = ( this.$current + delta + max) % max;
-
-    //         return this.$current;
-    //     }
-
-
-    //     setListener() {
-    //         this.$videos.each((i, item) => {
-
-    //             $(item).find('a.multimedia__item-inner').on('click', (e) => {
-    //                 e.preventDefault();
-
-    //                 e.preventDefault();
-
-    //                 this.$current = i;
-
-    //                 let delta = i * 100 / this.$max + '%';
-
-    //                 $(this.$Slides).css({
-    //                     'transform': `translate3d(-${delta}, 0, 0)`,
-    //                     'transition': 'transform 0s'
-    //                 });
-
-    //                 $('body').css({
-    //                     'overflow-y': 'hidden',
-    //                     'margin-right': '15px'
-    //                 });
-    //                 $(this.$popup).fadeIn(1000);
-
-    //                 return false
-    //             })
-    //         })
-    //     }
-
-    //     setPopupCloseButton() {
-    //         $(this.$popupCloseButton).on('click', (e) => {
-
-    //             $('body').css({
-    //                 'overflow-y': 'auto',
-    //                 'margin-right': '0'
-    //             });
-
-    //             $(this.$popup).fadeOut(1000);
-
-    //         })
-    //     }
-    // }
-
-    // $(() => {
-    //     $('.js-video-details').each((i, item) => {
-    //         new VideoDetails($(item));
-    //     });
-    // });
+    });
 </script>
 
 </body>

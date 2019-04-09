@@ -949,352 +949,215 @@
 <script type="text/javascript">
 "use strict";
 
-function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+    class PhotoDetails {
+        constructor($el) {
+            this.$element = $el;
+            this.$photos = this.$element.find('.js-photo-item');
+            this.$popup = $('body').find('.js-popup');
+            this.$Slides = this.$popup.find('.js-photo-slider');
+            this.$popupCloseButton = this.$popup.find('.js-popup-close');
+            this.$max = null;
+            this.$current = 0;
+            this.$arrowLeft = this.$popup.find('.js-popup-left');
+            this.$arrowRight = this.$popup.find('.js-popup-right');
+            this.$Galery = this.$popup.find('.js-photo-galery');
 
-function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+            this.setPhotoArray();
+            this.setGalery();
+            this.setListener();
+            this.setPopupCloseButton();
+            this.setArrowListener();
+        }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+        setGalery() {
+            $(this.$Galery).html('');
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var PhotoDetails =
-/*#__PURE__*/
-function () {
-  function PhotoDetails($el) {
-    _classCallCheck(this, PhotoDetails);
-
-    this.$element = $el;
-    this.$photos = this.$element.find('.js-photo-item');
-    this.$popup = $('body').find('.js-popup');
-    this.$Slides = this.$popup.find('.js-photo-slider');
-    this.$popupCloseButton = this.$popup.find('.js-popup-close');
-    this.$max = null;
-    this.$current = 0;
-    this.$arrowLeft = this.$popup.find('.js-popup-left');
-    this.$arrowRight = this.$popup.find('.js-popup-right');
-    this.$Galery = this.$popup.find('.js-photo-galery');
-    this.setPhotoArray();
-    this.setGalery();
-    this.setListener();
-    this.setPopupCloseButton();
-    this.setArrowListener();
-  }
-
-  _createClass(PhotoDetails, [{
-    key: "setGalery",
-    value: function setGalery() {
-      var _this = this;
-
-      $(this.$Galery).html('');
-      $(this.$photos).each(function (i, item) {
-        var divClass = i >= 4 ? '' : 'is-open';
-        $(_this.$Galery).append("\n                    <div class=\"popup__galery-item ".concat(divClass, "\">\n                        <div class=\"popup__galery-item_inner\">\n                            <a href=\"#\">\n                                <img src=\"").concat($(item).find('.multimedia__photo-inner a img').attr('src'), "\" alt=\"\">\n                            </a>\n                        </div>\n                    </div> "));
-      });
-      $(this.$Galery).find('.popup__galery-item').each(function (i, item) {
-        var delta = i * 100 / _this.$max + '%';
-        $(item).find('a').on('click', function (e) {
-          e.preventDefault();
-          _this.$current = i;
-          $(_this.$Slides).css({
-            'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-            'transition': 'transform 0s'
-          });
-        });
-      });
-      $(this.$Galery).append("\n                <div class=\"popup__galery-item is-open\">\n                    <div class=\"popup__galery-item_inner\">\n                        <a href=\"#\" class=\"multimedia__item-inner\">\n                            <div class=\"multimedia__item-decor\">\n                                <svg width=\"41\" height=\"7\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\"\n                                        d=\"M7 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM20.5 7a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm17 0a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z\"\n                                        fill=\"url(#paint0_linear)\" />\n                                    <defs>\n                                        <linearGradient id=\"paint0_linear\" x1=\"41\" y1=\"-3.5\" x2=\"0\" y2=\"-3.5\"\n                                            gradientUnits=\"userSpaceOnUse\">\n                                            <stop stop-color=\"#99D400\" />\n                                            <stop offset=\"1\" stop-color=\"#0097D4\" />\n                                        </linearGradient>\n                                    </defs>\n                                </svg>\n                            </div>\n                            <div class=\"multimedia__item-text text-center\">\n                                <span>\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0432\u0441\u0435 \u0444\u043E\u0442\u043E</span>\n                            </div>\n                        </a>\n                    </div>\n                </div> ").find('.popup__galery-item').last().find('a').on('click', function (e) {
-        $(_this.$Galery).find('.popup__galery-item').each(function (i, item) {
-          i >= 4 ? $(item).addClass('is-open') : null;
-          i === _this.$max ? $(item).removeClass('is-open') : null;
-        });
-      });
-    }
-  }, {
-    key: "changeCurrent",
-    value: function changeCurrent(delta) {
-      var max = this.$photos.length;
-      this.$current = (this.$current + delta + max) % max;
-      return this.$current;
-    }
-  }, {
-    key: "setArrowListener",
-    value: function setArrowListener() {
-      var _this2 = this;
-
-      $(this.$arrowLeft).on('click', function () {
-        var delta = _this2.changeCurrent(-1) * 100 / _this2.$max + '%';
-        $(_this2.$Slides).css({
-          'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-          'transition': 'transform 0.75s ease'
-        });
-      });
-      $(this.$arrowRight).on('click', function () {
-        var delta = _this2.changeCurrent(1) * 100 / _this2.$max + '%';
-        $(_this2.$Slides).css({
-          'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-          'transition': 'transform 0.75s linear'
-        });
-      });
-    }
-  }, {
-    key: "setPhotoArray",
-    value: function setPhotoArray() {
-      var _this3 = this;
-
-      // здесь я беру картинки из ссылок всех карточек, но по сути должен приходить массив картинок с сервера
-      this.$max = this.$photos.length;
-      var wdth = this.$max * 100 + '%';
-      var wdthItem = 100 / this.$max + '%';
-      $(this.$Slides).css('width', wdth);
-      $(this.$photos).each(function (i, item) {
-        $(_this3.$Slides).append("\n                    <div class=\"popup__photos-img-wrapper\" style=\"width: ".concat(wdthItem, "\">\n                        <div class=\"popup__photos-img js-photo-slider\">\n                            <img src=\"").concat($(item).find('.multimedia__photo-inner a img').attr('src'), "\" alt=\"\">\n                        </div>\n                        <div class=\"popup__photos-descr\">\n                            <h6>\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 #").concat(i + 1, "</h6>\n                            <p>26-27 \u0441\u0435\u043D\u0442\u044F\u0431\u0440\u044F \u0432 \u0441\u0435\u0432\u0435\u0440\u043D\u043E\u0439 \u0441\u0442\u043E\u043B\u0438\u0446\u0435 \u0432 \u041A\u0426 \xAB\u041F\u0435\u0442\u0440\u043E\u041A\u043E\u043D\u0433\u0440\u0435\u0441\u0441\xBB \u0441\u043E\u0441\u0442\u043E\u044F\u043B\u0430\u0441\u044C \u043A\u043E\u043D\u0444\u0435\u0440\u0435\u043D\u0446\u0438\u044F\n                                \xAB\u0422\u0440\u0430\u043D\u0441\u041B\u043E\u0433\u0438\u0441\u0442\u0438\u043A\u0430</p>\n                        </div>\n                    </div> "));
-      });
-    }
-  }, {
-    key: "setListener",
-    value: function setListener() {
-      var _this4 = this;
-
-      this.$photos.each(function (i, item) {
-        $(item).find('.multimedia__photo-inner a').on('click', function (e) {
-          e.preventDefault();
-          _this4.$current = i;
-          var delta = i * 100 / _this4.$max + '%';
-          $(_this4.$Slides).css({
-            'transform': "translate3d(-".concat(delta, ", 0, 0)"),
-            'transition': 'transform 0s'
-          });
-          $('body').css({
-            'overflow-y': 'hidden',
-            'margin-right': '15px'
-          });
-          $(_this4.$popup).fadeIn(1000);
-          return false;
-        });
-      });
-    }
-  }, {
-    key: "setPopupCloseButton",
-    value: function setPopupCloseButton() {
-      var _this5 = this;
-
-      $(this.$popupCloseButton).on('click', function (e) {
-        $('body').css({
-          'overflow-y': 'auto',
-          'margin-right': '0'
-        });
-        $(_this5.$popup).fadeOut(1000);
-        var int = setInterval(function () {
-          console.log('yes');
-
-          _this5.setGalery();
-
-          clearInterval(int);
-        }, 1000);
-      });
-    }
-  }]);
-
-  return PhotoDetails;
-}();
-
-$(function () {
-  $('.js-photo-details').each(function (i, item) {
-    new PhotoDetails($(item));
-  });
-});
-
-    // class PhotoDetails {
-    //     constructor($el) {
-    //         this.$element = $el;
-    //         this.$photos = this.$element.find('.js-photo-item');
-    //         this.$popup = $('body').find('.js-popup');
-    //         this.$Slides = this.$popup.find('.js-photo-slider');
-    //         this.$popupCloseButton = this.$popup.find('.js-popup-close');
-    //         this.$max = null;
-    //         this.$current = 0;
-    //         this.$arrowLeft = this.$popup.find('.js-popup-left');
-    //         this.$arrowRight = this.$popup.find('.js-popup-right');
-    //         this.$Galery = this.$popup.find('.js-photo-galery');
-
-    //         this.setPhotoArray();
-    //         this.setGalery();
-    //         this.setListener();
-    //         this.setPopupCloseButton();
-    //         this.setArrowListener();
-    //     }
-
-    //     setGalery() {
-    //         $(this.$Galery).html('');
-
-    //         $(this.$photos).each( (i, item) => {
+            $(this.$photos).each( (i, item) => {
                 
-    //             let divClass = (i >= 4) ? '' : 'is-open';
+                let divClass = (i >= 4) ? '' : 'is-open';
 
-    //             $(this.$Galery).append(`
-    //                 <div class="popup__galery-item ${divClass}">
-    //                     <div class="popup__galery-item_inner">
-    //                         <a href="#">
-    //                             <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
-    //                         </a>
-    //                     </div>
-    //                 </div> `
-    //             );
-    //         });
+                $(this.$Galery).append(`
+                    <div class="popup__galery-item ${divClass}">
+                        <div class="popup__galery-item_inner">
+                            <a href="#">
+                                <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
+                            </a>
+                        </div>
+                    </div> `
+                );
+            });
 
-    //         $(this.$Galery).find('.popup__galery-item').each( (i, item) => {
+            $(this.$Galery).find('.popup__galery-item').each( (i, item) => {
 
-    //             let delta = i * 100 / this.$max + '%';
+                let delta = i * 100 / this.$max + '%';
 
-    //             $(item).find('a').on( 'click', e => {
-    //                 e.preventDefault();
+                $(item).find('a').on( 'click', e => {
+                    e.preventDefault();
 
-    //                 this.$current = i;
+                    this.$current = i;
 
-    //                 $(this.$Slides).css({
-    //                     'transform': `translate3d(-${delta}, 0, 0)`,
-    //                     'transition': 'transform 0s'
-    //                 });
-    //             });
-    //         });
+                    $(this.$Slides).css({
+                        'transform': `translate3d(-${delta}, 0, 0)`,
+                        'transition': 'transform 0s'
+                    });
+                });
+            });
 
-    //         $(this.$Galery).append(`
-    //             <div class="popup__galery-item is-open">
-    //                 <div class="popup__galery-item_inner">
-    //                     <a href="#" class="multimedia__item-inner">
-    //                         <div class="multimedia__item-decor">
-    //                             <svg width="41" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
-    //                                 <path fill-rule="evenodd" clip-rule="evenodd"
-    //                                     d="M7 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM20.5 7a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm17 0a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
-    //                                     fill="url(#paint0_linear)" />
-    //                                 <defs>
-    //                                     <linearGradient id="paint0_linear" x1="41" y1="-3.5" x2="0" y2="-3.5"
-    //                                         gradientUnits="userSpaceOnUse">
-    //                                         <stop stop-color="#99D400" />
-    //                                         <stop offset="1" stop-color="#0097D4" />
-    //                                     </linearGradient>
-    //                                 </defs>
-    //                             </svg>
-    //                         </div>
-    //                         <div class="multimedia__item-text text-center">
-    //                             <span>Показать все фото</span>
-    //                         </div>
-    //                     </a>
-    //                 </div>
-    //             </div> `
-    //         ).find('.popup__galery-item').last().find('a').on('click', (e) => {
+            $(this.$Galery).append(`
+                <div class="popup__galery-item is-open">
+                    <div class="popup__galery-item_inner">
+                        <a href="#" class="multimedia__item-inner">
+                            <div class="multimedia__item-decor">
+                                <svg width="41" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM20.5 7a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm17 0a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                                        fill="url(#paint0_linear)" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear" x1="41" y1="-3.5" x2="0" y2="-3.5"
+                                            gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#99D400" />
+                                            <stop offset="1" stop-color="#0097D4" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="multimedia__item-text text-center">
+                                <span>Показать все фото</span>
+                            </div>
+                        </a>
+                    </div>
+                </div> `
+            ).find('.popup__galery-item').last().find('a').on('click', (e) => {
 
-    //             $(this.$Galery).find('.popup__galery-item').each( (i, item) => {
-    //                 ( i >= 4 ) ? $(item).addClass('is-open') : null;
+                $(this.$Galery).find('.popup__galery-item').each( (i, item) => {
+                    ( i >= 4 ) ? $(item).addClass('is-open') : null;
 
-    //                 ( i === this.$max ) ? $(item).removeClass('is-open') : null;
+                    ( i === this.$max ) ? $(item).removeClass('is-open') : null;
 
-    //             });                
-    //         });
-    //     }
+                });                
+            });
+        }
 
-    //     changeCurrent(delta) {
-    //         let max = this.$photos.length;
-    //         this.$current = ( this.$current + delta + max) % max;
+        changeCurrent(delta) {
+            let max = this.$photos.length;
+            this.$current = ( this.$current + delta + max) % max;
 
-    //         return this.$current;
-    //     }
+            return this.$current;
+        }
 
-    //     setArrowListener() {
-    //         $(this.$arrowLeft).on('click', () => {
+        setArrowListener() {
+            //влево по стрелке галереи
+            $(this.$arrowLeft).on('click', () => {
+                this.moveSlide(-1);
+            });
 
-    //             let delta = this.changeCurrent(-1) * 100 / this.$max + '%';
+            // вправо по стрелке галереи
+            $(this.$arrowRight).on('click', () => {
+            this.moveSlide(1);
+            });
 
-    //             $(this.$Slides).css({
-    //                 'transform': `translate3d(-${delta}, 0, 0)`,
-    //                 'transition': 'transform 0.75s ease'
-    //             });
-    //         });
+            // влево-вправо по стрелкам клавиатуры
+            $(document).keydown( (e) => {
+                if (e.keyCode == 37) {
+                    this.moveSlide(-1);
+                }
+                else if (e.keyCode == 39) {
+                    this.moveSlide(1);
+                }
+            });
+        }
 
-    //         $(this.$arrowRight).on('click', () => {
+        moveSlide(index) {
+            let delta = this.changeCurrent(index) * 100 / this.$max + '%';
 
-    //             let delta = this.changeCurrent(1) * 100 / this.$max + '%';
+            $(this.$Slides).css({
+                'transform': `translate3d(-${delta}, 0, 0)`,
+                'transition': 'transform 0.75s ease'
+            });
+        }
 
-    //             $(this.$Slides).css({
-    //                 'transform': `translate3d(-${delta}, 0, 0)`,
-    //                 'transition': 'transform 0.75s linear'
-    //             });
-    //         })
-    //     }
+        setPhotoArray() {
+            // здесь я беру картинки из ссылок всех карточек, но по сути должен приходить массив картинок с сервера
 
-    //     setPhotoArray() {
-    //         // здесь я беру картинки из ссылок всех карточек, но по сути должен приходить массив картинок с сервера
+            this.$max = this.$photos.length
+            let wdth = this.$max * 100 + '%';
+            let wdthItem = 100 / this.$max + '%';
+            $(this.$Slides).css('width', wdth);
 
-    //         this.$max = this.$photos.length
-    //         let wdth = this.$max * 100 + '%';
-    //         let wdthItem = 100 / this.$max + '%';
-    //         $(this.$Slides).css('width', wdth);
-
-    //         $(this.$photos).each( (i, item) => {
+            $(this.$photos).each( (i, item) => {
                 
-    //             $(this.$Slides).append(`
-    //                 <div class="popup__photos-img-wrapper" style="width: ${wdthItem}">
-    //                     <div class="popup__photos-img js-photo-slider">
-    //                         <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
-    //                     </div>
-    //                     <div class="popup__photos-descr">
-    //                         <h6>Название #${i + 1}</h6>
-    //                         <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция
-    //                             «ТрансЛогистика</p>
-    //                     </div>
-    //                 </div> `
-    //             );
-    //         });
-    //     }
+                $(this.$Slides).append(`
+                    <div class="popup__photos-img-wrapper" style="width: ${wdthItem}">
+                        <div class="popup__photos-img js-photo-slider">
+                            <img src="${ $(item).find('.multimedia__photo-inner a img').attr('src') }" alt="">
+                        </div>
+                        <div class="popup__photos-descr">
+                            <h6>Название #${i + 1}</h6>
+                            <p>26-27 сентября в северной столице в КЦ «ПетроКонгресс» состоялась конференция
+                                «ТрансЛогистика</p>
+                        </div>
+                    </div> `
+                );
+            });
+        }
 
-    //     setListener() {
-    //         this.$photos.each((i, item) => {
-    //             $(item).find('.multimedia__photo-inner a').on('click', (e) => {
-    //                 e.preventDefault();
+        setListener() {
+            this.$photos.each((i, item) => {
+                $(item).find('.multimedia__photo-inner a').on('click', (e) => {
+                    e.preventDefault();
                     
-    //                 this.$current = i;
+                    this.$current = i;
 
-    //                 let delta = i * 100 / this.$max + '%';
+                    let delta = i * 100 / this.$max + '%';
                     
-    //                 $(this.$Slides).css({
-    //                     'transform': `translate3d(-${delta}, 0, 0)`,
-    //                     'transition': 'transform 0s'
-    //                 });
+                    $(this.$Slides).css({
+                        'transform': `translate3d(-${delta}, 0, 0)`,
+                        'transition': 'transform 0s'
+                    });
       
-    //                 $('body').css({
-    //                     'overflow-y': 'hidden',
-    //                     'margin-right': '15px'
-    //                 });
-    //                 $(this.$popup).fadeIn(1000);
+                    $(this.$popup).fadeIn(500);
 
-    //                 return false
-    //             })
-    //         })
-    //     }
+                    return false
+                })
+            })
+        }
 
-    //     setPopupCloseButton() {
-    //         $(this.$popupCloseButton).on('click', (e) => {
+        setPopupCloseButton() {
+            // закрытие по клику на Х
+            $(this.$popupCloseButton).on('click', (e) => {
+                this.popupClose()
+            });
 
-    //             $('body').css({
-    //                 'overflow-y': 'auto',
-    //                 'margin-right': '0'
-    //             });
+            // закрытие по клику вне галереи
+            $(this.$popup).on('click', (e) => {
+                if ( e.target.classList[0] == 'popup' ) {
+                    this.popupClose()
+                }
+            });
 
-    //             $(this.$popup).fadeOut(1000);
+            //закрытие по esc
+            $(document).keydown( (e) => {
+                if (e.keyCode == 27) {
+                    this.popupClose()
+                }
+            });
+        }  
 
-    //             let int = setInterval(() => {
-    //                 console.log('yes');
-    //                 this.setGalery();
-    //                 clearInterval(int);
-    //             }, 1000);
-    //         })
-    //     }  
-    // }
+        popupClose() {
+            $(this.$popup).fadeOut(500);
 
-    // $(() => {
-    //     $('.js-photo-details').each((i, item) => {
-    //         new PhotoDetails($(item));
-    //     });
-    // });
+            let int = setInterval(() => {
+                this.setGalery();
+                clearInterval(int);
+            }, 500);
+        }
+    }
+
+    $(() => {
+        $('.js-photo-details').each((i, item) => {
+            new PhotoDetails($(item));
+        });
+    });
 </script>
 </body>
 </html>

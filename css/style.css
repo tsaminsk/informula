@@ -485,10 +485,11 @@
 .experts__item-button .btn {
     padding: 2px 14px;
     border-color: #9cd6ee;
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, border-color 0.5s;
 }
 
 .experts__item-button:hover .btn {
+    border-color: #0097D4;
     background-color: #0097D4;
 }
 
@@ -646,7 +647,7 @@
     line-height: 28px;
     color: #808080;
     border-radius: 15px;
-    border: 1px solid #808080;
+    border: 1px solid #D8D8D8;
     transition: border-color 0.5s;
 }
 
@@ -706,6 +707,17 @@
     border-radius: 4px;
     border-bottom: 1px solid #eee;
     overflow: hidden;
+}
+
+.smi__item-img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0001) 0%, #FFFFFF 100%);
 }
 
 .smi__item-img img {
@@ -789,10 +801,32 @@
     overflow: hidden;
 }
 
+.press-block__item-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    /* background: -52px 57px no-repeat;
+    background-size: 240px auto; */
+}
+
+.press-block__item-decor img {
+    max-width: 216px;
+    margin: 57px 0 0;
+    opacity: 0.025;
+}
+
 .press-block__item-icon img {
     width: 40px;
     height: 40px;
     margin: 0 0 19px;
+}
+
+.press-block__item-icon svg {
+    fill: #009cdb;
+
 }
 
 .press-block__item-title {
@@ -800,7 +834,7 @@
     vertical-align: top;
     padding: 0 3px 2px 0;
     font-family: 'Montserrat';
-    font-weight: 600;
+    font-weight: 700;
     font-size: 22px;
     line-height: 1;
     border-bottom: 1px solid rgba(43, 43, 43, 0.2);
@@ -825,8 +859,10 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 14px 31px 0 rgba(0, 0, 0, 0.14);
 }
 
-.press-block__item:hover .press-block__item-text {
-    line-height: 19px;
+@media (min-width: 1200px) and (max-width: 1339px) {
+    .press-block__item-inner {
+        height: 340px;
+    }
 }
 
 .press-block__item-button {
@@ -891,7 +927,7 @@
 
 .submenu__info-title {
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 22px;
     color: #2B2B2B;
     margin: 0 0 14px;
@@ -953,7 +989,6 @@
 }
 
 .submenu__context-person a:hover {
-    padding: 0 0 10px;
     color: #0097D4;
 }
 
@@ -969,6 +1004,8 @@
     display: inline-block;
     height: 40px;
     padding: 0 25px;
+    font-size: 14px;
+    font-weight: 600;
     line-height: 40px;
     color: #fff !important;
     border-radius: 2px;
@@ -991,15 +1028,18 @@
 }
 
 .submenu__info-soc a svg {
-    height: 17px;
+    height: 15px;
     fill: #2b2b2b;
     transition: transform 0.5s ease,
     fill 0.5s ease;
 }
 
+.submenu__info-soc a:last-child svg {
+    height: 17px;
+}
+
 .submenu__info-soc a:hover svg {
     fill: #009cdb;
-    transform: scale(1.2);
 }
 
 .mobile_block {

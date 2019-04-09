@@ -938,71 +938,54 @@
     </div>
 </div>
 <script type="text/javascript">
-    "use strict";
 
-    function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance])
-    { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+    class Experts {
+        constructor($el) {
+            this.$element = $el;
+            this.$experts = this.$element.find('.js-expert');
+            this.$popup = $('body').find('.js-popup');
+            this.$popupCloseButton = this.$popup.find('.js-popup-close');
 
-    function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new
-    TypeError("Cannot call a class as a function"); } }
+            this.setListener();
+            this.setPopupCloseButton();
+        }
 
-    function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor=props[i];
-        descriptor.enumerable=descriptor.enumerable || false; descriptor.configurable=true; if ("value" in descriptor)
-        descriptor.writable=true; Object.defineProperty(target, descriptor.key, descriptor); } } function
-        _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype,
-        protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; } var
-        Experts= /*#__PURE__*/ function () { function Experts($el) { _classCallCheck(this, Experts); this.$element=$el;
-        this.$experts=this.$element.find('.js-expert'); this.$popup=$('body').find('.js-popup');
-        this.$popupCloseButton=this.$popup.find('.js-popup-close'); this.setListener(); this.setPopupCloseButton(); }
-        _createClass(Experts, [{ key: "setListener" , value: function setListener() { var _this=this;
-        this.$experts.each(function (i, item) { $(item).find('.experts__item-button a.btn').on('click', function (e)
-        { // тут по идее запрос к серверу и нужно в попап разложить контент или заранее его прописать в переменные
-        $('body').css({ 'overflow-y' : 'hidden' , 'margin-right' : '15px' }); $(_this.$popup).fadeIn(1000); return
-        false; }); }); } }, { key: "setPopupCloseButton" , value: function setPopupCloseButton() { var _this2=this;
-        $(this.$popupCloseButton).on('click', function (e) { $('body').css({ 'overflow-y' : 'auto' , 'margin-right'
-        : '0' }); $(_this2.$popup).fadeOut(1000); }); } }]); return Experts; }(); $(function () {
-        $('.js-experts').each(function (i, item) { new Experts($(item)); }); });
-    // class Experts {
-    //     constructor($el) {
-    //         this.$element = $el;
-    //         this.$experts = this.$element.find('.js-expert');
-    //         this.$popup = $('body').find('.js-popup');
-    //         this.$popupCloseButton = this.$popup.find('.js-popup-close');
+        setListener() {
+            this.$experts.each( (i, item) => {
+                $(item).find('.experts__item-button a.btn').on('click', (e) => {
+                    // тут по идее запрос к серверу и нужно в попап разложить контент или заранее его прописать в переменные
+                    $(this.$popup).fadeIn(500);
+                    return false
+                })
+            })
+        }
 
-    //         this.setListener();
-    //         this.setPopupCloseButton();
-    //     }
+        setPopupCloseButton() {
+            $(this.$popupCloseButton).on('click', (e) => {
+                $(this.$popup).fadeOut(500);
+            });
 
-    //     setListener() {
-    //         this.$experts.each( (i, item) => {
-    //             $(item).find('.experts__item-button a.btn').on('click', (e) => {
-    //                 // тут по идее запрос к серверу и нужно в попап разложить контент или заранее его прописать в переменные
-    //                 $('body').css({
-    //                     'overflow-y': 'hidden',
-    //                     'margin-right': '15px'
-    //                 });
-    //                 $(this.$popup).fadeIn(1000);
-    //                 return false
-    //             })
-    //         })
-    //     }
+            // закрытие по клику вне галереи
+            $(this.$popup).on('click', (e) => {
+                if ( e.target.classList[0] == 'popup' ) {
+                    $(this.$popup).fadeOut(500);
+                }
+            });
 
-    //     setPopupCloseButton() {
-    //         $(this.$popupCloseButton).on('click', (e) => {
-    //             $('body').css({
-    //                 'overflow-y': 'auto',
-    //                 'margin-right': '0'
-    //             });
-    //             $(this.$popup).fadeOut(1000);
-    //         })
-    //     }
-    // }
+            //закрытие по esc
+            $(document).keydown( (e) => {
+                if (e.keyCode == 27) {
+                    $(this.$popup).fadeOut(500);
+                }
+            });
+        }
+    }
 
-    // $(() => {
-    //     $('.js-experts').each((i, item) => {
-    //     new Experts($(item));
-    //     });
-    // });
+    $(() => {
+        $('.js-experts').each((i, item) => {
+        new Experts($(item));
+        });
+    });
 </script>
 </body>
 </html>
