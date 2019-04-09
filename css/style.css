@@ -808,8 +808,6 @@
     display: inline-block;
     vertical-align: top;
     height: 100%;
-    /* background: -52px 57px no-repeat;
-    background-size: 240px auto; */
 }
 
 .press-block__item-decor img {
@@ -822,11 +820,6 @@
     width: 40px;
     height: 40px;
     margin: 0 0 19px;
-}
-
-.press-block__item-icon svg {
-    fill: #009cdb;
-
 }
 
 .press-block__item-title {
