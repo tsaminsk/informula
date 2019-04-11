@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="files/images/favicon.png">
     <link href="https://www.baikalsr.ru/plugins/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://www.baikalsr.ru/plugins/typeahead/typeahead.css" rel="stylesheet">
     <link href="https://www.baikalsr.ru/plugins/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
@@ -938,54 +939,79 @@
     </div>
 </div>
 <script type="text/javascript">
+"use strict";
 
-    class Experts {
-        constructor($el) {
-            this.$element = $el;
-            this.$experts = this.$element.find('.js-expert');
-            this.$popup = $('body').find('.js-popup');
-            this.$popupCloseButton = this.$popup.find('.js-popup-close');
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
 
-            this.setListener();
-            this.setPopupCloseButton();
-        }
+function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-        setListener() {
-            this.$experts.each( (i, item) => {
-                $(item).find('.experts__item-button a.btn').on('click', (e) => {
-                    // тут по идее запрос к серверу и нужно в попап разложить контент или заранее его прописать в переменные
-                    $(this.$popup).fadeIn(500);
-                    return false
-                })
-            })
-        }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor=props[i];
+    descriptor.enumerable=descriptor.enumerable || false; descriptor.configurable=true; if ("value" in descriptor)
+    descriptor.writable=true; Object.defineProperty(target, descriptor.key, descriptor); } } function
+    _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype,
+    protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; } var
+    Experts= /*#__PURE__*/ function () { function Experts($el) { _classCallCheck(this, Experts); this.$element=$el;
+    this.$experts=this.$element.find('.js-expert'); this.$popup=$('body').find('.js-popup');
+    this.$popupCloseButton=this.$popup.find('.js-popup-close'); this.setListener(); this.setPopupCloseButton(); }
+    _createClass(Experts, [{ key: "setListener" , value: function setListener() { var _this=this;
+    this.$experts.each(function (i, item) { $(item).find('.experts__item-button a.btn').on('click', function (e) {
+    $(_this.$popup).fadeIn(500); return false; }); }); } }, { key: "setPopupCloseButton" , value: function
+    setPopupCloseButton() { var _this2=this; $(this.$popupCloseButton).on('click', function (e) {
+    $(_this2.$popup).fadeOut(500); }); $(this.$popup).on('click', function (e) { if (e.target.classList[0]=='popup' ) {
+    $(_this2.$popup).fadeOut(500); } }); $(document).keydown(function (e) { if (e.keyCode==27) {
+    $(_this2.$popup).fadeOut(500); } }); } }]); return Experts; }(); $(function () { $('.js-experts').each(function (i,
+    item) { new Experts($(item)); }); });
 
-        setPopupCloseButton() {
-            $(this.$popupCloseButton).on('click', (e) => {
-                $(this.$popup).fadeOut(500);
-            });
+// исходный js до babel
 
-            // закрытие по клику вне галереи
-            $(this.$popup).on('click', (e) => {
-                if ( e.target.classList[0] == 'popup' ) {
-                    $(this.$popup).fadeOut(500);
-                }
-            });
+    // class Experts {
+    //     constructor($el) {
+    //         this.$element = $el;
+    //         this.$experts = this.$element.find('.js-expert');
+    //         this.$popup = $('body').find('.js-popup');
+    //         this.$popupCloseButton = this.$popup.find('.js-popup-close');
 
-            //закрытие по esc
-            $(document).keydown( (e) => {
-                if (e.keyCode == 27) {
-                    $(this.$popup).fadeOut(500);
-                }
-            });
-        }
-    }
+    //         this.setListener();
+    //         this.setPopupCloseButton();
+    //     }
 
-    $(() => {
-        $('.js-experts').each((i, item) => {
-        new Experts($(item));
-        });
-    });
+    //     setListener() {
+    //         this.$experts.each( (i, item) => {
+    //             $(item).find('.experts__item-button a.btn').on('click', (e) => {
+    //                 // тут по идее запрос к серверу и нужно в попап разложить контент или заранее его прописать в переменные
+    //                 $(this.$popup).fadeIn(500);
+    //                 return false
+    //             })
+    //         })
+    //     }
+
+    //     setPopupCloseButton() {
+    //         $(this.$popupCloseButton).on('click', (e) => {
+    //             $(this.$popup).fadeOut(500);
+    //         });
+
+    //         // закрытие по клику вне галереи
+    //         $(this.$popup).on('click', (e) => {
+    //             if ( e.target.classList[0] == 'popup' ) {
+    //                 $(this.$popup).fadeOut(500);
+    //             }
+    //         });
+
+    //         //закрытие по esc
+    //         $(document).keydown( (e) => {
+    //             if (e.keyCode == 27) {
+    //                 $(this.$popup).fadeOut(500);
+    //             }
+    //         });
+    //     }
+    // }
+
+    // $(() => {
+    //     $('.js-experts').each((i, item) => {
+    //     new Experts($(item));
+    //     });
+    // });
 </script>
 </body>
 </html>
